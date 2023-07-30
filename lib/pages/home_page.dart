@@ -18,10 +18,10 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               TopHeader(),
-              // 테스트
-
-              // search bar
-
+              SizedBox(
+                height: 23,
+              ),
+              SearchBar(),
             ],
           ),
         ),
@@ -60,8 +60,7 @@ class TopHeader extends StatelessWidget {
         // Notification
         Container(
           decoration: BoxDecoration(
-              color: Colors.blue[600],
-              borderRadius: BorderRadius.circular(12)),
+              color: Colors.blue[600], borderRadius: BorderRadius.circular(12)),
           padding: const EdgeInsets.all(12),
           child: const Icon(
             Icons.notifications,
@@ -69,6 +68,34 @@ class TopHeader extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class SearchBar extends StatelessWidget {
+  const SearchBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.blue[600], borderRadius: BorderRadius.circular(12)),
+      padding: const EdgeInsets.all(12),
+      child: const Row(
+        children: [
+          Icon(
+            Icons.search,
+            color: Colors.white,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(
+            'Search',
+            style: TextStyle(color: Colors.white),
+          )
+        ],
+      ),
     );
   }
 }
