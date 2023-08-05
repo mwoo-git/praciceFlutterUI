@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:testflutter/util/emoticon_face.dart';
 import 'package:testflutter/util/exercise_tile.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePageView extends StatefulWidget {
+  const HomePageView({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePageView> createState() => _HomePageViewState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageViewState extends State<HomePageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
