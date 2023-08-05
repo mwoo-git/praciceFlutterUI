@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testflutter/util/emoticon_face.dart';
+import 'package:testflutter/util/exercise_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,96 +24,55 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Column(
-                children: [
-                  _topHeader(),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  _customSearchBar(),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  _howDoYouFeel(),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  _emoticonFaces()
-                ],
-              ),
-            ),
+            _header(),
             const SizedBox(
               height: 25,
             ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.all(25),
-                color: Colors.grey[200],
-                child: Center(
-                  child: Column(
-                    children: [
-                      // exercise heading
-                      _exercisesHeading(),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      // list
-                      Container(
-                          padding: EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(12),
-                                    child: Container(
-                                        padding: EdgeInsets.all(16),
-                                        color: Colors.orange,
-                                        child: Icon(Icons.favorite,
-                                        color: Colors.white,)),
-                                  ),
-                                  SizedBox(
-                                    width: 12,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        '말하기 스킬들',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                      SizedBox(width: 5),
-                                      Text(
-                                        '16 Exercises',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                          fontSize: 14,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Icon(Icons.more_horiz)
-                            ],
-                          ))
-                    ],
-                  ),
-                ),
-              ),
-            )
+            _list()
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _header() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      child: Column(
+        children: [
+          _topHeader(),
+          const SizedBox(
+            height: 25,
+          ),
+          _customSearchBar(),
+          const SizedBox(
+            height: 25,
+          ),
+          _howDoYouFeel(),
+          const SizedBox(
+            height: 25,
+          ),
+          _emoticonFaces()
+        ],
+      ),
+    );
+  }
+
+  Widget _list() {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.all(25),
+        color: Colors.grey[200],
+        child: Center(
+          child: Column(
+            children: [
+              _exercisesHeading(),
+              const SizedBox(
+                height: 20,
+              ),
+              _exercisesList()
+            ],
+          ),
         ),
       ),
     );
@@ -185,9 +145,7 @@ class _HomePageState extends State<HomePage> {
         Text(
           'How do you feel?',
           style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
         ),
         Icon(Icons.more_horiz, color: Colors.white)
       ],
@@ -275,6 +233,33 @@ class _HomePageState extends State<HomePage> {
         ),
         Icon(Icons.more_horiz)
       ],
+    );
+  }
+
+  Widget _exercisesList() {
+    return Expanded(
+      child: ListView(
+        children: const [
+          ExerciseTile(
+            icon: Icons.favorite,
+            exerciseName: '말하기 스킬들',
+            numberOfExercises: 16,
+            color: Colors.orange,
+          ),
+          ExerciseTile(
+            icon: Icons.person,
+            exerciseName: '읽기 스킬들',
+            numberOfExercises: 8,
+            color: Colors.green,
+          ),
+          ExerciseTile(
+            icon: Icons.star,
+            exerciseName: '쓰기 스킬들',
+            numberOfExercises: 20,
+            color: Colors.pink,
+          ),
+        ],
+      ),
     );
   }
 }
