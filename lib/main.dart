@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:testflutter/pages/home/view/home_page.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
     ),
